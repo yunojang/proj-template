@@ -7,6 +7,7 @@
     "@craco/craco": "^6.4.5",
     "@emotion/react": "^11.10.4",
     "@emotion/styled": "^11.10.4",
+    "@storybook/react": "^6.5.13",
     "@testing-library/jest-dom": "^5.16.5",
     "@testing-library/react": "^13.4.0",
     "@testing-library/user-event": "^13.5.0",
@@ -30,6 +31,7 @@
     "build": "craco build",
     "test": "craco test",
     "generate": "plop",
+    "storybook": "start-storybook -p 6006 -s public",
     "eject": "react-scripts eject"
   },
   "eslintConfig": {

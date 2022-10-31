@@ -3,11 +3,20 @@
  * @param {import('plop').NodePlopAPI} plop
  */
 
+exports.generator = () => {};
+
 // ui component generator
-// ui component, storybook, test
 module.exports = {
-  decription: "UI Component Generator",
-  prompts: [{ type: "input", name: "name", message: "Component name:" }],
+  decription: "Global UI Component Generator",
+  prompts: [
+    { type: "input", name: "name", message: "Component Name:" },
+    // {
+    //   type: "list",
+    //   name: "type",
+    //   message: "Witch",
+    //   choices: ["Web component", "Simple UI"],
+    // },
+  ],
   actions: [
     {
       type: "add",
@@ -17,7 +26,13 @@ module.exports = {
     {
       type: "add",
       path: "src/components/Elements/{{pascalCase name}}/{{pascalCase name}}.tsx",
+      // data: { test: "plop data" },
       templateFile: "generator/component/component.tsx.hbs",
+    },
+    {
+      type: "add",
+      path: "src/components/Elements/{{pascalCase name}}/{{pascalCase name}}.stories.tsx",
+      templateFile: "generator/component/component.stories.tsx.hbs",
     },
   ],
 };

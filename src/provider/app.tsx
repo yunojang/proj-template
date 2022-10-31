@@ -1,6 +1,6 @@
 import { BrowserRouter as Router } from "react-router-dom";
 import { Suspense } from "react";
-import { ChakraProvider } from "@chakra-ui/react";
+import { ChakraProvider, Spinner } from "@chakra-ui/react";
 
 import { ErrorBoundary } from "@/components/ErrorBoundary";
 
@@ -20,19 +20,26 @@ const ErrorFallback = ({ msg }: { msg?: string }) => {
   );
 };
 
-const ErrorInner = () => {
-  throw TypeError("TestError: Imediatly throw error");
-};
+const CodeLoading = () => (
+  <div className="w-screen h-screen flex flex-col gap-2 justify-center items-center">
+    <Spinner
+      color="green.500"
+      emptyColor="gray.200"
+      speed="0.3s"
+      size="xl"
+      thickness="4px"
+    />
+    <span>Loading...</span>
+  </div>
+);
+
+// const ErrorInner = () => {
+//   throw TypeError("TestError: Imediatly throw error");
+// };
 
 const AppProvider = ({ children }: AppProviderProps) => {
   return (
-    <Suspense
-      fallback={
-        <div className="w-screen h-screen flex justify-center items-center">
-          loading...
-        </div>
-      }
-    >
+    <Suspense fallback={<CodeLoading />}>
       <ErrorBoundary fallback={(msg) => <ErrorFallback msg={msg} />}>
         <ChakraProvider>
           <Router>{children}</Router>
