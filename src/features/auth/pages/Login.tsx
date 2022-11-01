@@ -1,9 +1,11 @@
+import { useNavigate } from "react-router-dom";
 import { AuthLayout } from "../components";
 import LoginForm from "../components/LoginForm";
 
 export const Login = () => {
+  const navigate = useNavigate();
   const login = () => {
-    console.log("login");
+    navigate("/");
   };
 
   return (
