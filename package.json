@@ -45,6 +45,7 @@
     "storybook": "start-storybook -p 6006",
     "build-storybook": "build-storybook",
     "cy:open": "cypress open",
+    "test:e2e": "cypress run -b chrome",
     "eject": "react-scripts eject"
   },
   "eslintConfig": {
