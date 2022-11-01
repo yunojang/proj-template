@@ -1,5 +1,4 @@
-import { render, screen, waitFor } from "@testing-library/react";
-import userEvent from "@testing-library/user-event";
+import { render, screen, waitFor, userEvent } from "@/test/test-utils";
 
 import LoginForm, { INVALIDE_MSG } from "../LoginForm";
 

@@ -1,0 +1,15 @@
+import { render, screen } from "@/test/test-utils";
+import { {{pascalCase name}} } from "./{{pascalCase name}}";
+
+describe("{{pascalCase name}} Component test suite", () => {
+  test("render inital text", async () => {
+    // render
+    render(<{{pascalCase name}} />);
+
+    // query
+    const head = screen.getByRole("heading");
+
+    // assertion
+    expect(head).toHaveTextContent("{{pascalCase name}}");
+  });
+});

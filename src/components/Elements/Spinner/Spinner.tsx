@@ -3,9 +3,5 @@ import React, { FC } from "react";
 export interface SpinnerProps {}
 
 export const Spinner: FC<SpinnerProps> = () => {
-  return (
-    <div>
-      <div>Spinner</div>
-    </div>
-  );
+  return <h5>Spinner</h5>;
 };
