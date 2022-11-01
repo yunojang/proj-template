@@ -6,6 +6,13 @@ module.exports = {
       "@": path.resolve(process.cwd(), "src"),
     },
   },
+  jest: {
+    configure: {
+      moduleNameMapper: {
+        "^@/(.+)": "<rootDir>/src/$1",
+      },
+    },
+  },
   style: {
     postcss: {
       plugin: ["tailwindcss", "autoprefixer"],
