@@ -2,10 +2,10 @@ import { useNavigate } from "react-router-dom";
 import { AuthLayout } from "../components";
 import LoginForm from "../components/LoginForm";
 
-export const Login = () => {
+const Login = () => {
   const navigate = useNavigate();
   const login = () => {
-    navigate("/");
+    navigate("/user");
   };
 
   return (
@@ -14,3 +14,5 @@ export const Login = () => {
     </AuthLayout>
   );
 };
+
+export default Login;

@@ -13,6 +13,7 @@ client.interceptors.response.use(
     const message = error.response?.data?.message ?? error.message;
 
     // popup toast
+    console.error(message);
 
     return Promise.reject(error);
   }

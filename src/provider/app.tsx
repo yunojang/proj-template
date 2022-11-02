@@ -1,8 +1,9 @@
-import { BrowserRouter as Router } from "react-router-dom";
 import { Suspense } from "react";
-import { ChakraProvider, Spinner } from "@chakra-ui/react";
+import { BrowserRouter as Router } from "react-router-dom";
 
 import { ErrorBoundary } from "@/components/ErrorBoundary";
+import { QueryClientProvider, queryClient } from "@/lib/react-query";
+import { ChakraProvider, Spinner } from "@chakra-ui/react";
 
 interface AppProviderProps {
   children?: React.ReactNode;
@@ -23,13 +24,13 @@ const ErrorFallback = ({ msg }: { msg?: string }) => {
 const CodeLoading = () => (
   <div className="w-screen h-screen flex flex-col gap-2 justify-center items-center">
     <Spinner
-      color="green.500"
+      color="green.300"
       emptyColor="gray.200"
-      speed="0.3s"
+      speed="0.5s"
       size="xl"
-      thickness="4px"
+      thickness="3px"
     />
-    <span>Loading...</span>
+    <div className="textxl">Loading...</div>
   </div>
 );
 
@@ -39,13 +40,15 @@ const CodeLoading = () => (
 
 const AppProvider = ({ children }: AppProviderProps) => {
   return (
-    <Suspense fallback={<CodeLoading />}>
-      <ErrorBoundary fallback={(msg) => <ErrorFallback msg={msg} />}>
-        <ChakraProvider>
-          <Router>{children}</Router>
-        </ChakraProvider>
-      </ErrorBoundary>
-    </Suspense>
+    <ErrorBoundary fallback={(msg) => <ErrorFallback msg={msg} />}>
+      <ChakraProvider>
+        <QueryClientProvider client={queryClient}>
+          <Suspense fallback={<CodeLoading />}>
+            <Router>{children}</Router>
+          </Suspense>
+        </QueryClientProvider>
+      </ChakraProvider>
+    </ErrorBoundary>
   );
 };
 
