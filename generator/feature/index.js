@@ -3,45 +3,80 @@
  * @param {import('plop').NodePlopAPI} plop
  */
 
-const path = require("path");
-const fs = require("fs");
+// const path = require("path");
+// const fs = require("fs");
 
-// If the resolve function meets the absolute path, the previous path is ignored
-const featureDir = path.resolve(process.cwd(), "src/features");
-const features = fs.readdirSync(featureDir);
+// // If the resolve function meets the absolute path, the previous path is ignored
+// const featureDir = path.resolve(process.cwd(), "src/features");
+// const features = fs.readdirSync(featureDir);
+
+const feature_type = {
+  default: "Default",
+  query: "Query",
+};
+
+const makeAddAction = ({ templateFile, path, ...config }) => {
+  const templateDir = "generator/feature";
+  templateFile = templateFile[0] === "/" ? templateFile : `/${templateFile}`;
+
+  const featureDir = "src/features/{{camelCase name}}";
+  path = path[0] === "/" ? path : `/${path}`;
+
+  return {
+    ...config,
+    type: "add",
+    path: featureDir + path,
+    templateFile: templateDir + templateFile,
+  };
+};
 
 module.exports = {
   decription: "New feature generator",
   prompts: [
-    { type: "input", name: "name", message: "Feature Name:" },
     {
       type: "list",
-      name: "featureName",
-      choices: [
-        "New Feature",
-        ...features.map((feature) => `New component in ${feature}`),
-      ],
+      name: "type",
+      message: "Select feture template type",
+      choices: [...Object.values(feature_type)],
     },
+    { type: "input", name: "name", message: "Feature Name:" },
   ],
   actions: (answers) => {
-    const isGenFeature = answers.featureName === "New Feature";
-
-    return [
-      // {
-      //   type: "add",
-      //   path: "src/features/{{pascalCase name}}/index.ts",
-      //   templateFile: "generator/feature/index.ts.hbs",
-      // },
-      // {
-      //   type: "add",
-      //   path: "src/features/{{pascalCase name}}/{{pascalCase name}}.tsx",
-      //   templateFile: "generator/feature/component.tsx.hbs",
-      // },
-      // {
-      //   type: "add",
-      //   path: "src/features/{{pascalCase name}}/{{pascalCase name}}.stories.tsx",
-      //   templateFile: "generator/feature/component.stories.tsx.hbs",
-      // },
+    // const routeName = "{{pascalCase name}}Route";
+    // const hookName = "use{{pascalCase name}}";
+    let actions = [
+      makeAddAction({
+        templateFile: "index.ts.hbs",
+        path: "/index.ts",
+      }),
+      makeAddAction({
+        templateFile: "route-index.tsx.hbs",
+        path: "/routes/index.tsx",
+      }),
+      makeAddAction({
+        templateFile: "Home.tsx.hbs",
+        path: "/routes/Home.tsx",
+      }),
+      makeAddAction({
+        templateFile: "component.tsx.hbs",
+        path: "/components/{{pascalCase name}}.tsx",
+      }),
     ];
+
+    if (answers.type === feature_type.query) {
+      actions = [
+        ...actions,
+        makeAddAction({
+          templateFile: "types.ts.hbs",
+          path: "/types/index.ts",
+        }),
+        makeAddAction({
+          templateFile: "query.ts.hbs",
+          path: "/api/get{{pascalCase name}}.ts",
+        }),
+      ];
+    }
+
+    return actions;
   },
 };

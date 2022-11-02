@@ -1,4 +1,4 @@
-// import AppProvider from "../src/provider/app.tsx";
+import AppProvider from "../src/provider/app.tsx";
 
 export const parameters = {
   actions: { argTypesRegex: "^on[A-Z].*" },
@@ -10,10 +10,10 @@ export const parameters = {
   },
 };
 
-// export const decorators = [
-//   (Story) => (
-//     <AppProvider>
-//       <Story />
-//     </AppProvider>
-//   ),
-// ];
+export const decorators = [
+  (Story) => (
+    <AppProvider>
+      <Story />
+    </AppProvider>
+  ),
+];

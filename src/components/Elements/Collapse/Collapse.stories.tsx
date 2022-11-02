@@ -1,10 +1,10 @@
 import { Meta, Story } from '@storybook/react';
 
-import { ListView, ListViewProps } from './ListView';
+import { Collapse, CollapseProps } from './Collapse';
 
 const meta: Meta = {
-  title: 'Components/ListView',
-  component: ListView,
+  title: 'Components/Collapse',
+  component: Collapse,
   parameters: {
     controls: { expanded: true },
   },
@@ -12,7 +12,7 @@ const meta: Meta = {
 
 export default meta;
 
-const Template: Story<ListViewProps> = (props) => <ListView {...props}>ListView</ListView>;
+const Template: Story<CollapseProps> = (props) => <Collapse {...props}>Collapse</Collapse>;
 
 export const Default = Template.bind({});
 Default.args = {};

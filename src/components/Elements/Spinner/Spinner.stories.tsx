@@ -1,9 +1,9 @@
-import { Meta, Story } from "@storybook/react";
+import { Meta, Story } from '@storybook/react';
 
-import { Spinner, SpinnerProps } from "./Spinner";
+import { Spinner, SpinnerProps } from './Spinner';
 
 const meta: Meta = {
-  title: "Components/Spinner",
+  title: 'Components/Spinner',
   component: Spinner,
   parameters: {
     controls: { expanded: true },
@@ -12,9 +12,7 @@ const meta: Meta = {
 
 export default meta;
 
-const Template: Story<SpinnerProps> = (props) => (
-  <Spinner {...props}>Spinner</Spinner>
-);
+const Template: Story<SpinnerProps> = (props) => <Spinner {...props}>Spinner</Spinner>;
 
 export const Default = Template.bind({});
 Default.args = {};
