@@ -1,20 +1,21 @@
-import { API_URL } from '@/config';
+import Axios from "axios";
 
-interface ClientConfig {
-  url?: string;
-}
+import { API_URL } from "@/config";
 
-interface RequestConfig {}
+const client = Axios.create({
+  baseURL: API_URL,
+});
 
-export class Client {
-  private static instance: Client;
-  static getInstance(config?: ClientConfig) {
-    if (!this.instance) {
-      this.instance = new Client(config);
-    }
+client.interceptors.request.use();
+client.interceptors.response.use(
+  (response) => response.data,
+  (error) => {
+    const message = error.response?.data?.message ?? error.message;
 
-    return this.instance;
+    // popup toast
+
+    return Promise.reject(error);
   }
+);
 
-  private constructor(config: Partial<ClientConfig> = {}) {}
-}
+export default client;
