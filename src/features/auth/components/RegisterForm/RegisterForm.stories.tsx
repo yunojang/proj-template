@@ -3,7 +3,7 @@ import { Meta, Story } from '@storybook/react';
 import { RegisterForm, RegisterFormProps } from './RegisterForm';
 
 const meta: Meta = {
-  title: 'Components/RegisterForm',
+  title: 'Auth/RegisterForm',
   component: RegisterForm,
   parameters: {
     controls: { expanded: true },
