@@ -1,7 +1,7 @@
 import { render, screen } from "@/test/test-utils";
-import { {{pascalCase name}} } from "{{directory}}{{pascalCase name}}";
+import { {{ pascalCase name }} } from "{{directory}}{{pascalCase name}}";
 
-describe("{{pascalCase name}} Component test suite", () => {
+describe("{{ pascalCase name }} Component test suite", () => {
   test("render inital text", async () => {
     // render
     render(<{{pascalCase name}} />);
@@ -10,6 +10,6 @@ describe("{{pascalCase name}} Component test suite", () => {
     const head = screen.getByRole("heading");
 
     // assertion
-    expect(head).toHaveTextContent("{{pascalCase name}}");
+    expect(head).toHaveTextContent("{{ pascalCase name }}");
   });
 });
