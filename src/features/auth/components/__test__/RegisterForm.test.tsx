@@ -3,8 +3,9 @@ import { RegisterForm } from "../RegisterForm";
 
 describe("RegisterForm Component test suite", () => {
   test("render inital text", async () => {
+    const onSucess = jest.fn();
     // render
-    render(<RegisterForm />);
+    render(<RegisterForm onSuccess={onSucess} />);
 
     // query
     const head = screen.getByRole("heading");
