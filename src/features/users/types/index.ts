@@ -1,6 +1,6 @@
 import { BaseEntity } from "@/types";
 
 export interface User extends BaseEntity {
-  name: string;
-  email: string;
+    name: string;
+    email: string;
 }

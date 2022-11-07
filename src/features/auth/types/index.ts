@@ -1,1 +1,2 @@
-export type Gender = "male" | "female";
+export * from "./common";
+export * from "./response";

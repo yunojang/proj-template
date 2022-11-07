@@ -2,16 +2,16 @@ import { useNavigate } from "react-router-dom";
 import { AuthLayout, RegisterForm } from "../components";
 
 const Register = () => {
-  const navigate = useNavigate();
-  const register = () => {
-    navigate("/login");
-  };
+    const navigate = useNavigate();
+    const register = () => {
+        navigate("/auth/login");
+    };
 
-  return (
-    <AuthLayout>
-      <RegisterForm onSuccess={register} />
-    </AuthLayout>
-  );
+    return (
+        <AuthLayout title="Register">
+            <RegisterForm onSuccess={register} />
+        </AuthLayout>
+    );
 };
 
 export default Register;
