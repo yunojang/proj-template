@@ -5,7 +5,8 @@ import LoginForm from "../components/LoginForm";
 const Login = () => {
     const navigate = useNavigate();
     const login = () => {
-        navigate("/user");
+        navigate("/app");
+        // navigate(0);
     };
 
     return (

@@ -4,11 +4,11 @@ import AppProvider from "@/provider/app";
 import AppRoute from "@/routes";
 
 function App() {
-  return (
-    <AppProvider>
-      <AppRoute />
-    </AppProvider>
-  );
+    return (
+        <AppProvider>
+            <AppRoute />
+        </AppProvider>
+    );
 }
 
 export default App;

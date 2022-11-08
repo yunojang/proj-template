@@ -9,5 +9,5 @@ export interface RegisterCredentialsDTO {
 }
 
 export const requestRegister = async (data: RegisterCredentialsDTO) => {
-    return (await client.post("/api/auth/register", data)) as UserResponse;
+    return await client.post<any, UserResponse>("/api/auth/register", data);
 };

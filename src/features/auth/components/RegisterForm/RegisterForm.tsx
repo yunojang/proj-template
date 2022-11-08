@@ -26,15 +26,17 @@ export const RegisterForm: React.FC<RegisterFormProps> = ({ onSuccess }) => {
     const [alert, setAlert] = useState<string | null>(null);
     const hideAlert = () => setAlert(null);
 
-    const onSubmit = () => {
+    const onSubmit = async () => {
         if (!validateEmail(email)) {
             setAlert(REGISTER_INVALIDE_MSG.email);
             return;
         }
 
-        register({ email, password });
+        const user = await register({ email, password });
 
-        onSuccess();
+        if (user) {
+            onSuccess();
+        }
     };
 
     return (

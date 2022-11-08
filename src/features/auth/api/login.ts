@@ -1,4 +1,5 @@
 import client from "@/lib/client";
+import { UserResponse } from "../types";
 
 export interface LoginCredentialsDTO {
     email: string;
@@ -6,5 +7,5 @@ export interface LoginCredentialsDTO {
 }
 
 export const loginWithEmailAndPassword = async (data: LoginCredentialsDTO) => {
-    return await client.post("/api/auth/login", data);
+    return await client.post<any, UserResponse>("/api/auth/login", data);
 };
