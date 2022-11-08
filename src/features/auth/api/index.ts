@@ -27,9 +27,7 @@ const loadUser = async () => {
 };
 
 export const useAuth = () => {
-    const { data: user } = useQuery(["my"], loadUser, {
-        retry: false,
-    });
+    const { data: user } = useQuery(["my"], loadUser);
 
     return {
         register,

@@ -3,18 +3,18 @@ import { useQuery } from "react-query";
 import client from "@/lib/client";
 import { User } from "../types";
 
-export const getUsers = (): Promise<User> => {
-    return client.get("/users");
+export const getuser = (): Promise<User> => {
+    return client.get("/api/auth/me");
 };
 
 export const useUser = () => {
     const { data, ...result } = useQuery({
         queryKey: ["user"],
-        queryFn: getUsers,
+        queryFn: getuser,
     });
 
     if (!data) {
-        throw getUsers;
+        throw getuser;
     }
 
     return { data, ...result };

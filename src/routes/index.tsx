@@ -11,8 +11,10 @@ interface AppRouteProps {}
 const AppRoute: React.FC<AppRouteProps> = () => {
     const { user } = useAuth();
 
+    console.log(user);
+
     // auth 확인 후 라우터 결정
-    // login 후 라우터 안바뀌는 이슈
+    // Issue - login 후 라우터 안바뀜
     const currentRoutes = useMemo(
         () => (user ? protectedRoutes : publicRoutes),
         [user]
