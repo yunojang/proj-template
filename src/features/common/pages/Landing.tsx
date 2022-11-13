@@ -7,7 +7,7 @@ export const Landing = () => {
     const navigate = useNavigate();
     const handleStart = () => {
         if (user) {
-            navigate("/app");
+            navigate("/user");
         } else {
             navigate("/auth/login");
         }

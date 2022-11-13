@@ -1,13 +1,13 @@
+import { useMemo } from "react";
+import { useQuery } from "react-query";
 import { getToken, setToken } from "@/utils/storage";
 
 import { requestRegister, RegisterCredentialsDTO } from "./register";
 import { LoginCredentialsDTO, loginWithEmailAndPassword } from "./login";
-import { getUser } from "./getUser";
-import { useQuery } from "react-query";
+import { getUser } from "@/features/users/api/getUser";
 
 const register = async (data: RegisterCredentialsDTO) => {
     const response = await requestRegister(data);
-    // const user = handleUserResponse(response);
     return response.user;
 };
 
@@ -18,12 +18,14 @@ const login = async (data: LoginCredentialsDTO) => {
 };
 
 const loadUser = async () => {
-    if (getToken()) {
-        const data = await getUser();
-        return data;
+    const token = getToken();
+
+    if (!token) {
+        return null;
     }
 
-    return null;
+    const response = await getUser();
+    return response.user;
 };
 
 export const useAuth = () => {
@@ -32,7 +34,6 @@ export const useAuth = () => {
     return {
         register,
         login,
-        loadUser,
         user,
     };
 };

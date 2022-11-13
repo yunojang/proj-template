@@ -1,4 +1,3 @@
-import { useMemo } from "react";
 import { useRoutes } from "react-router-dom";
 import { useAuth } from "@/features/auth/api";
 
@@ -11,14 +10,11 @@ interface AppRouteProps {}
 const AppRoute: React.FC<AppRouteProps> = () => {
     const { user } = useAuth();
 
-    console.log(user);
+    // console.log(user);
 
-    // auth 확인 후 라우터 결정
-    // Issue - login 후 라우터 안바뀜
-    const currentRoutes = useMemo(
-        () => (user ? protectedRoutes : publicRoutes),
-        [user]
-    );
+    // Issue - useAuth의 user가 비동기일 때 적용되지 않음
+    const currentRoutes = user ? protectedRoutes : publicRoutes;
+    // const currentRoutes = [...protectedRoutes, ...publicRoutes];
 
     return useRoutes([...currentRoutes, ...commonRoute]);
 };

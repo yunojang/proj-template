@@ -3,19 +3,23 @@ import { useQuery } from "react-query";
 import client from "@/lib/client";
 import { User } from "../types";
 
-export const getuser = (): Promise<User> => {
+interface GetUserDTO {
+    user: User;
+}
+
+export const getUser = (): Promise<GetUserDTO> => {
     return client.get("/api/auth/me");
 };
 
 export const useUser = () => {
     const { data, ...result } = useQuery({
         queryKey: ["user"],
-        queryFn: getuser,
+        queryFn: getUser,
     });
 
     if (!data) {
-        throw getuser;
+        throw getUser;
     }
 
-    return { data, ...result };
+    return { user: data.user, ...result };
 };

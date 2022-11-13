@@ -1,11 +1,11 @@
 import { useUser } from "../api/getUser";
 
 export const Profile = () => {
-    const { data } = useUser();
+    const { user } = useUser();
 
     return (
         <div>
-            <div>{data.email}</div>
+            <div>{user.email}</div>
         </div>
     );
 };

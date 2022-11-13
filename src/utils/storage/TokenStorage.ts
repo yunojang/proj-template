@@ -13,5 +13,13 @@ export const setToken = (token: string) => {
 };
 
 export const getToken = (): string => {
+    if (!Storage.existStorage(tokenStorage.key)) {
+        setToken("");
+    }
+
     return tokenStorage.item;
+};
+
+export const clearToken = () => {
+    tokenStorage.clear();
 };

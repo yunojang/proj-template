@@ -1,10 +1,6 @@
 export class Storage {
     constructor(public key: string) {
         this.key = key;
-
-        if (!Storage.existStorage(key)) {
-            this.item = "";
-        }
     }
 
     static existStorage(key: string) {
@@ -25,6 +21,10 @@ export class Storage {
 
     set item(data: any) {
         localStorage.setItem(this.key, JSON.stringify(data));
+    }
+
+    clear() {
+        localStorage.removeItem(this.key);
     }
 }
 
