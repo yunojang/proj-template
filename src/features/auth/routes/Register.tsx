@@ -8,7 +8,7 @@ const Register = () => {
     };
 
     return (
-        <AuthLayout title="Register">
+        <AuthLayout title="REGISTER">
             <RegisterForm onSuccess={register} />
         </AuthLayout>
     );

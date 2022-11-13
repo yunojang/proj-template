@@ -10,7 +10,7 @@ const Login = () => {
     };
 
     return (
-        <AuthLayout title="Login">
+        <AuthLayout title="LOGIN">
             <LoginForm onSuccess={login} />
         </AuthLayout>
     );

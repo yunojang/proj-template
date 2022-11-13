@@ -1,6 +1,9 @@
 import { useState, useCallback } from "react";
 import { useAuth } from "../../api";
 
+import { Button, Input, Text } from "@chakra-ui/react";
+import { Link } from "react-router-dom";
+
 export interface RegisterFormProps {
     onSuccess(): void;
 }
@@ -40,31 +43,40 @@ export const RegisterForm: React.FC<RegisterFormProps> = ({ onSuccess }) => {
     };
 
     return (
-        <div
-            className="flex flex-col gap-2 justify-center"
-            onChange={() => hideAlert()}
-        >
-            <div>
-                <span>email</span>
-                <input
-                    aria-label="email"
-                    onChange={(e) => setEmail(e.target.value)}
-                />
-            </div>
-            <div>
-                <span>pwd</span>
-                <input
-                    aria-label="password"
-                    onChange={(e) => setPassword(e.target.value)}
-                />
-            </div>
-            <button
-                className="w-full bg-blue-400 text-white"
-                onClick={onSubmit}
+        <>
+            <div
+                className="flex flex-col gap-2 justify-center"
+                onChange={() => hideAlert()}
             >
-                Register
-            </button>
+                <div>
+                    <Text>Email</Text>
+                    <Input
+                        aria-label="email"
+                        onChange={(e) => setEmail(e.target.value)}
+                        size="sm"
+                        width={280}
+                    />
+                </div>
+                <div>
+                    <Text>Password</Text>
+                    <Input
+                        aria-label="password"
+                        size="sm"
+                        onChange={(e) => setPassword(e.target.value)}
+                    />
+                </div>
+                <Button
+                    className="w-full"
+                    colorScheme="blue"
+                    onClick={onSubmit}
+                >
+                    Register
+                </Button>
+            </div>
             {alert && <div role="alert">{alert}</div>}
-        </div>
+            <Link to="/auth/login" className="underline">
+                Login
+            </Link>
+        </>
     );
 };

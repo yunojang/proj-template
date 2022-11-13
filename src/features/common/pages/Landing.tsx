@@ -22,8 +22,9 @@ export const Landing = () => {
                 <Button
                     onClick={handleStart}
                     colorScheme="blue"
-                    variant="outline"
+                    // variant="outline"
                     size="md"
+                    width={100}
                 >
                     START
                 </Button>

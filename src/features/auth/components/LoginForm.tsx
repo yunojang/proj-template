@@ -2,6 +2,8 @@ import { useState, useCallback } from "react";
 import { Link } from "react-router-dom";
 import { useAuth } from "../api";
 
+import { Button, Input, Text } from "@chakra-ui/react";
+
 export interface LoginFormProps {
     onSuccess(): void;
 }
@@ -39,35 +41,41 @@ const LoginForm: React.FC<LoginFormProps> = ({ onSuccess }) => {
     };
 
     return (
-        <div
-            className="flex flex-col gap-2 justify-center"
-            onChange={() => hideAlert()}
-        >
-            <div>
-                <span>email</span>
-                <input
-                    aria-label="email"
-                    onChange={(e) => setEmail(e.target.value)}
-                />
-            </div>
-            <div>
-                <span>pwd</span>
-                <input
-                    aria-label="password"
-                    onChange={(e) => setPassword(e.target.value)}
-                />
-            </div>
-            <button
-                className="w-full bg-blue-400 text-white"
-                onClick={onSubmit}
+        <>
+            <div
+                className="flex flex-col gap-2 justify-center"
+                onChange={() => hideAlert()}
             >
-                Login
-            </button>
+                <div>
+                    <Text>Email</Text>
+                    <Input
+                        aria-label="email"
+                        onChange={(e) => setEmail(e.target.value)}
+                        size="sm"
+                        width={280}
+                    />
+                </div>
+                <div>
+                    <Text>Password</Text>
+                    <Input
+                        aria-label="password"
+                        size="sm"
+                        onChange={(e) => setPassword(e.target.value)}
+                    />
+                </div>
+                <Button
+                    className="w-full"
+                    colorScheme="blue"
+                    onClick={onSubmit}
+                >
+                    Login
+                </Button>
+            </div>
             {alert && <div role="alert">{alert}</div>}
-            <Link to="/auth/register" className="text-right">
+            <Link to="/auth/register" className="underline">
                 Register
             </Link>
-        </div>
+        </>
     );
 };
 
