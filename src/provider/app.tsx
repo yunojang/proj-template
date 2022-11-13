@@ -31,7 +31,7 @@ const CodeLoading = () => (
             size="xl"
             thickness="4px"
         />
-        <div className="text-sm text-gray-500">Initial Loading</div>
+        {/* <div className="text-sm text-gray-500">Initial Loading</div> */}
     </div>
 );
 

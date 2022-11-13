@@ -1,9 +1,11 @@
 import { useQuery } from "react-query";
 import { clearToken, getToken, setToken } from "@/utils/storage";
+import { useToast } from "@chakra-ui/react";
 
 import { requestRegister, RegisterCredentialsDTO } from "./register";
 import { LoginCredentialsDTO, loginWithEmailAndPassword } from "./login";
 import { getUser } from "@/features/users/api/getUser";
+import { ReactNode } from "react";
 
 const register = async (data: RegisterCredentialsDTO) => {
     const response = await requestRegister(data);
@@ -33,7 +35,16 @@ const logout = () => {
 };
 
 export const useAuth = () => {
-    const { data: user } = useQuery(["my"], loadUser);
+    const toast = useToast();
+    const { data: user } = useQuery(["my"], loadUser, {
+        onError: (err) => {
+            toast({
+                status: "error",
+                position: "top-right",
+                description: err as ReactNode,
+            });
+        },
+    });
 
     return {
         register,

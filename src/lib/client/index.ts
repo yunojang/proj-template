@@ -26,11 +26,7 @@ client.interceptors.response.use(
     // server response error
     (error) => {
         const message = error.response?.data?.message ?? error.message;
-
-        // popup toast
-        console.error(message);
-
-        return Promise.reject(error);
+        return Promise.reject(message);
     }
 );
 
