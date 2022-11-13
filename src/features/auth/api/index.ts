@@ -1,6 +1,5 @@
-import { useMemo } from "react";
 import { useQuery } from "react-query";
-import { getToken, setToken } from "@/utils/storage";
+import { clearToken, getToken, setToken } from "@/utils/storage";
 
 import { requestRegister, RegisterCredentialsDTO } from "./register";
 import { LoginCredentialsDTO, loginWithEmailAndPassword } from "./login";
@@ -28,6 +27,11 @@ const loadUser = async () => {
     return response.user;
 };
 
+const logout = () => {
+    clearToken();
+    window.location.assign(window.location.origin);
+};
+
 export const useAuth = () => {
     const { data: user } = useQuery(["my"], loadUser);
 
@@ -35,5 +39,6 @@ export const useAuth = () => {
         register,
         login,
         user,
+        logout,
     };
 };
