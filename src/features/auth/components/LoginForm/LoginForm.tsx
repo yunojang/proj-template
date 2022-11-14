@@ -1,6 +1,6 @@
 import { useState, useCallback } from "react";
 import { Link } from "react-router-dom";
-import { useAuth } from "../api";
+import { useAuth } from "../../api";
 
 import { Button, Input, Text } from "@chakra-ui/react";
 
@@ -13,7 +13,7 @@ export const INVALIDE_MSG = {
     password: "Invalid password, password is longer than 5 characters",
 };
 
-const LoginForm: React.FC<LoginFormProps> = ({ onSuccess }) => {
+export const LoginForm: React.FC<LoginFormProps> = ({ onSuccess }) => {
     const { login } = useAuth();
 
     // temp validate
@@ -78,5 +78,3 @@ const LoginForm: React.FC<LoginFormProps> = ({ onSuccess }) => {
         </>
     );
 };
-
-export default LoginForm;
