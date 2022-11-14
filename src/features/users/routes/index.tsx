@@ -1,11 +1,12 @@
 import { Route, Routes } from "react-router-dom";
 
-import UserHome from "./userHome";
+// import UserHome from "./userHome";
+import Dashboard from "./Dashboard";
 
 export const UserRoute = () => {
-  return (
-    <Routes>
-      <Route path="/" element={<UserHome />} />
-    </Routes>
-  );
+    return (
+        <Routes>
+            <Route path="/" element={<Dashboard />} />
+        </Routes>
+    );
 };
