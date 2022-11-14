@@ -12,9 +12,9 @@ export const setToken = (token: string) => {
     tokenStorage.item = token;
 };
 
-export const getToken = (): string => {
+export const getToken = (): string | null => {
     if (!Storage.existStorage(tokenStorage.key)) {
-        setToken("");
+        return null;
     }
 
     return tokenStorage.item;
