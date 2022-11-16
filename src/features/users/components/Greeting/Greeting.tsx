@@ -2,9 +2,9 @@ import { useAuth } from "@/features/auth/api";
 import { FC, useMemo } from "react";
 import { getRandomIntro } from "./constant";
 
-export interface ProfileProps {}
+export interface GreetingProps {}
 
-export const Profile: FC<ProfileProps> = () => {
+export const Greeting: FC<GreetingProps> = () => {
     const { user } = useAuth();
 
     const introMsg = useMemo(() => getRandomIntro(), []);

@@ -1,8 +1,8 @@
 import { Suspense } from "react";
 
 import UserLayout from "../components/Layout";
-import { Profile } from "../components/Profile";
-import { UserAvarta } from "../components/UserAvarta";
+import { Greeting } from "../components/Greeting";
+import { UserPopover } from "../components/UserPopover";
 import { ChatStart } from "../components/ChatStart";
 
 const Dashboard = () => {
@@ -10,8 +10,8 @@ const Dashboard = () => {
         <Suspense>
             <UserLayout>
                 <header className="flex justify-between p-8">
-                    <Profile />
-                    <UserAvarta />
+                    <Greeting />
+                    <UserPopover />
                 </header>
 
                 <main className="flex-1 bg-gray-100 rounded-md m-4 flex flex-col p-8">

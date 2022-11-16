@@ -1,15 +1,15 @@
 import { render, screen } from "@/test/test-utils";
-import { Greeting } from "../Greeting";
+import { Menu } from "./Menu";
 
-describe("Profile Component test suite", () => {
+describe("Menu Component test suite", () => {
     test("render inital text", async () => {
         // render
-        render(<Greeting />);
+        render(<Menu />);
 
         // query
         const head = screen.getByRole("heading");
 
         // assertion
-        expect(head).toHaveTextContent("Profile");
+        expect(head).toHaveTextContent("Menu");
     });
 });
