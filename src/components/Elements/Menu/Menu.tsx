@@ -15,7 +15,7 @@ export interface MenuProps {
 
 export const Menu: FC<MenuProps> = ({ menu = [], onSelect = () => {} }) => {
     return (
-        <div className="flex flex-col">
+        <div className="flex flex-col gap-2">
             {menu.map((m, idx) => (
                 <div
                     key={idx}
