@@ -13,9 +13,11 @@ import {
 import { SettingsIcon } from "@chakra-ui/icons";
 import { Menu } from "@/components/Elements/Menu";
 
-export interface UserPopoverProps {}
+export interface UserPopoverProps {
+    onSetting(): void;
+}
 
-export const UserPopover: FC<UserPopoverProps> = () => {
+export const UserPopover: FC<UserPopoverProps> = ({ onSetting }) => {
     const { logout, user } = useAuth();
 
     return (
@@ -36,11 +38,12 @@ export const UserPopover: FC<UserPopoverProps> = () => {
                                     id: "setting",
                                     label: "설정",
                                     icon: <SettingsIcon />,
+                                    onSelect: onSetting,
                                 },
                                 {
                                     id: "logout",
                                     label: "로그아웃",
-                                    onSelect: () => logout(),
+                                    onSelect: logout,
                                 },
                             ]}
                         />
