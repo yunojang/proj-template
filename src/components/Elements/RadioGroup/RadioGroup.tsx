@@ -59,7 +59,7 @@ export const RadioGroup: FC<RadioGroupProps> = ({
     name,
     options,
     defaultValue,
-    onChange = console.log,
+    onChange = () => {},
 }) => {
     const { getRootProps, getRadioProps } = useRadioGroup({
         name,

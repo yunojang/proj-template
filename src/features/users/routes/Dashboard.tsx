@@ -26,6 +26,7 @@ const Dashboard = () => {
                                 isOpen={isOpen}
                                 open={open}
                                 close={close}
+                                onSuccess={close}
                             />
                         </Suspense>
                     </div>
